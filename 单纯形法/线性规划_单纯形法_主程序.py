@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QApplication,QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 from 线性规划_单纯形法_ui import Ui_MainWindow
@@ -6,15 +6,14 @@ from 线性规划_单纯形法_计算结果 import LpProblem_solve
 from 线性规划_单纯形法_图形生成 import LpProblem_solve_plot
 import sys
 
-
-class Llieproblem(QMainWindow,Ui_MainWindow):
+class LinearProblemSimplex(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
 
     def information_collect(self):
         # 数据收集
-        return{
+        return {
             'gear_A': int(self.gear_A.text()),
             'gear_B': int(self.gear_B.text()),
             'gear_profit': int(self.gear_profit.text()),
@@ -26,9 +25,8 @@ class Llieproblem(QMainWindow,Ui_MainWindow):
         }
 
     def LpProblem_solve(self):
-        # 调用数据计算结果函数
+        # 调用单纯形法计算结果函数
         input_data = self.information_collect()
-        print(input_data)
         result = LpProblem_solve(input_data)
         self.x1_varValue.setText(str(result["生产量"]["齿轮"]))
         self.x2_varValue.setText(str(result["生产量"]["轴承"]))
@@ -44,19 +42,14 @@ class Llieproblem(QMainWindow,Ui_MainWindow):
         image_route = LpProblem_solve_plot(input_data)
         image = QPixmap(image_route)
         scaled_image = image.scaled(
-            self.plot.size(),  # 使用控件当前尺寸
+            self.plot.size(),
             Qt.AspectRatioMode.KeepAspectRatio,
             Qt.TransformationMode.SmoothTransformation
         )
         self.plot.setPixmap(scaled_image)
 
-
-# 启动入口
 if __name__ == '__main__':
-    if False:
-        print(input_data)
-        print(f"{image_route}")
-    app = QApplication(sys.argv)					# 初始化应用
-    m = Llieproblem()								# 创建界面
-    m.show()										# 显示界面
-    sys.exit(app.exec())							# 在主线程中退出
+    app = QApplication(sys.argv)
+    window = LinearProblemSimplex()
+    window.show()
+    sys.exit(app.exec())
