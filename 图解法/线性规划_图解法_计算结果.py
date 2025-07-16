@@ -71,8 +71,7 @@ if __name__ == "__main__":
         }
         result = LpProblem_solve(input_data)  # 传入测试数据
         print("调试结果:", result)
-        print(
-            f"生产计划：齿轮 {result['生产量']['齿轮']:.0f} 件，轴承 {result['生产量']['轴承']:.0f} 件")  # 获取变量 xi 的最优解值
+        print(f"生产计划：齿轮 {result['生产量']['齿轮']:.0f} 件，轴承 {result['生产量']['轴承']:.0f} 件")  # 获取变量 xi 的最优解值
         print(f"最大利润：{result['最大利润']:.0f} 元")  # 获取目标函数的最优值
         print(f"约束条件：{input_data['gear_A']} * x1 + {input_data['bearing_A']} * x2 <= {input_data['inventory_A']};")
         print(f"        {input_data['gear_B']} * x1 + {input_data['bearing_B']} * x2 <= {input_data['inventory_B']};")

@@ -4,6 +4,7 @@ import numpy as np
 
 class SimplexSolver:
     def __init__(self, input_data):
+        # 输入数据准备
         self.input_data = input_data
         self.tableau = None
         self.basic_vars = None
@@ -127,8 +128,8 @@ if __name__ == "__main__":
         }
         result = LpProblem_solve(input_data)
         print("调试结果:", result)
-        print(f"生产计划：齿轮 {result['生产量']['齿轮']:.0f} 件，轴承 {result['生产量']['轴承']:.0f} 件")
-        print(f"最大利润：{result['最大利润']:.0f} 元")
+        print(f"生产计划：齿轮 {result['生产量']['齿轮']} 件，轴承 {result['生产量']['轴承']} 件")
+        print(f"最大利润：{result['最大利润']} 元")
         print(f"约束条件：{input_data['gear_A']} * x1 + {input_data['bearing_A']} * x2 <= {input_data['inventory_A']};")
         print(f"        {input_data['gear_B']} * x1 + {input_data['bearing_B']} * x2 <= {input_data['inventory_B']};")
         print(f"        x1 >= 0 ; x2 >= 0")

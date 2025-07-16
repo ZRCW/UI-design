@@ -49,10 +49,10 @@ def LpProblem_solve_plot(input_data):
     plt.title(f"LpProblem_solve_plot\n(Product_Profit_Maximization: {input_data['gear_profit']}*x1 + {input_data['bearing_profit']}*x2)")
     plt.grid(True)
     plt.legend()
-    plt.savefig("线性规划_单纯形法_图像.png")  # 保存图像
+    plt.savefig("线性规划_图解法_图像.png")  # 保存图像
 
     # 返回图片
-    image_route = "线性规划_单纯形法_图像.png"
+    image_route = "线性规划_图解法_图像.png"
     return image_route
 
 
